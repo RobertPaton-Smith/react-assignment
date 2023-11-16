@@ -1,0 +1,97 @@
+@import "globals.css";
+
+/* Global Properties */
+#navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: var(--charcoal);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+
+}
+
+#active {
+    background-color: white;
+    background-color: var(--old-rose);
+}
+
+#active:hover {
+    color: white;
+}
+
+.navbar-item a {
+    color: var(--columbia-blue);
+    padding: 8px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--charcoal);
+}
+
+.navbar-item a:hover {
+    color: var(--air-superiority-blue);
+    background-color: var(--columbia-blue);
+
+}
+
+/* Desktop Properties */
+@media only screen and (min-width: 600px) {
+    #navbar {
+        overflow: hidden;
+        height: 100px;
+    }
+
+    #logo {
+        border-right: none;
+        float: left;   
+    }
+
+    #navbar div {
+        float: right;
+        height: 100%;
+    }
+
+    .navbar-item {
+        display: inline;
+        float: left;
+        border-right: 1px solid #bbb;
+        width: 150px;
+        height: 100%;
+    }
+    .navbar-item a{
+        height: 100%;
+        padding: 25%;
+    }
+
+    .navbar-item:last-child {
+        border-right: none;
+    }
+
+}
+
+/* Mobile Properties */
+@media only screen and (max-width: 600px) {
+    #navbar {
+        height: 100%;
+        overflow: auto;
+    }
+    #logo {
+        display:none; 
+    }
+    .navbar-item a {
+        padding: 5em;
+    }
+
+    .navbar-item {
+        border-bottom: 1px solid #bbb;
+    }
+    .navbar-item:first-child {
+        border-top: 1px solid #bbb;
+    }
+
+}
