@@ -1,0 +1,51 @@
+@import "./globals.css";
+
+#canvasControlPanel {
+    width: 100%;
+    height: auto;
+    height: var(--div-height);
+
+    display: flex;
+
+    margin-top: 20px;
+}
+#bannerBox {
+    width: 50%;
+}
+
+#canvasControlButtonBox {
+    width: 50%;
+}
+
+#canvasControlButtonBox button {
+    /* color: red; */
+    min-width: 250px;
+    margin: 20px 5px 20px 5px;
+    /* margin-top: 25px; */
+    height: 80px;
+    font-weight: 900;
+    font-size: larger;
+    float: right;
+
+    /* justify-content: right; */
+}
+
+/* special case for phones */
+@media only screen and (max-width: 600px) {
+    #canvasControlPanel {
+        display: block;
+
+    }
+    #bannerBox {
+        width: 100%;
+    }
+
+    #canvasControlButtonBox {
+        width: 100%;
+    }
+
+    #canvasControlButtonBox button {
+        justify-content: center;
+        float: none;
+    }
+}

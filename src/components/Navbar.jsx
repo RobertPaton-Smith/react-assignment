@@ -4,7 +4,6 @@ export default function Navbar() {
 
     return (
         <ul id="navbar">
-            {/* <li id="logo" class="navbar-item">Sample Project</li> */}
             <li id="logo">
                 <p>Rob's Demo</p>
             </li>
