@@ -18,16 +18,18 @@
 }
 
 #canvasControlButtonBox button {
-    /* color: red; */
     min-width: 250px;
     margin: 20px 5px 20px 5px;
-    /* margin-top: 25px; */
     height: 80px;
     font-weight: 900;
     font-size: larger;
     float: right;
+}
 
-    /* justify-content: right; */
+canvas {
+  margin-top: 10px;
+  width: 100%;
+  border: 5px solid black; 
 }
 
 /* special case for phones */

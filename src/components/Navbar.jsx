@@ -33,7 +33,7 @@ function NavItem({href, children, tabIndex, ...props })
     }
 
     return (
-        <li class="navbar-item">
+        <li className="navbar-item">
             <a href={href} id={idName} tabIndex={tabIndex}>{children}</a>
         </li>
     )
