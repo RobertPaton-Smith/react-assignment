@@ -23,12 +23,10 @@ function App() {
   }
   
   return (
-    <>
+    <div id="page" tabIndex="3">
       <Navbar />
-      <div id="mainContent">
-        {component}
-      </div>
-    </>
+      {component}
+    </div>
   );
 }
 

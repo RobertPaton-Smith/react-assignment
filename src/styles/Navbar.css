@@ -7,36 +7,55 @@
     padding: 0;
     background-color: var(--charcoal);
 
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-
-
+    z-index: 1;
 }
 
 #active {
     background-color: white;
     background-color: var(--old-rose);
-}
-
-#active:hover {
-    color: white;
+    pointer-events: none;
 }
 
 .navbar-item a {
     color: var(--columbia-blue);
-    padding: 8px;
     display: block;
     text-align: center;
     text-decoration: none;
     background-color: var(--charcoal);
 }
 
-.navbar-item a:hover {
+.navbar-item a:hover, .navbar-item a:focus {
     color: var(--air-superiority-blue);
     background-color: var(--columbia-blue);
+}
 
+#active:hover, #active:focus {
+    color: var(--columbia-blue)
+}
+
+
+#logo {
+    float: left;
+    
+    transition: filter 300ms;
+    will-change: filter;
+    transform: rotate();
+}
+#logo p {
+    font-weight: bolder;
+    font-size: 1.5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 5% 0px 25% 30px;
+    color: var(--air-superiority-blue)
+}
+#logo:hover {
+  filter: drop-shadow(0 10px 25px var(--old-rose));
+}
+#logo.react:hover {
+  filter: drop-shadow(0 0 2em var(--old-rose));
 }
 
 /* Desktop Properties */
@@ -44,6 +63,8 @@
     #navbar {
         overflow: hidden;
         height: 100px;
+        position: fixed;
+
     }
 
     #logo {
@@ -57,17 +78,18 @@
     }
 
     .navbar-item {
+        width: 125px;
+        height: 100%;
         display: inline;
         float: left;
         border-right: 1px solid #bbb;
-        width: 150px;
-        height: 100%;
     }
+    
     .navbar-item a{
         height: 100%;
-        padding: 25%;
+        padding-top: 27.5%;
     }
-
+    
     .navbar-item:last-child {
         border-right: none;
     }
@@ -77,8 +99,10 @@
 /* Mobile Properties */
 @media only screen and (max-width: 600px) {
     #navbar {
-        height: 100%;
+        /* height: 100%; */
+        height: auto;
         overflow: auto;
+        /* position: relative; */
     }
     #logo {
         display:none; 

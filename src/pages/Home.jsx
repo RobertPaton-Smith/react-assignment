@@ -70,8 +70,8 @@ export default function Home()
 
     return (
         <>
-            <h1>Home</h1>
             <div id="mainContent">
+                <h1>Home</h1>
                 <div>
                     <h2>Introduction</h2>
                     <p>
@@ -94,7 +94,6 @@ export default function Home()
                     <button onClick={handleClickMe}>Click Me! <i>(do it now)</i></button>
                     <br/>
                     <canvas id="picturePastingCanvas"/>
-                    {/* <br/> */}
                 </div>
             </div>
         </>
