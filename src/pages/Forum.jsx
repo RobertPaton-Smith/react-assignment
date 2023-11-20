@@ -1,45 +1,96 @@
-import React, { useState, useEffect } from "react";
-import "../styles/Forum.css";
+import React, {useState, useEffect, useRef} from "react";
+import "../styles/Forum.css"
 
 export default function Forum() {
-    const [posts, setPosts] = useState([]);
+    const [username, setUsername] = useState("anonymousUser1");
 
-    function RenderMessage({ forumPost }) {
+    const [posts, setPosts] = useState([
+        {
+            timestamp: "09:00:00 25/12/2021",
+            text: "Hello, welcome to the forum",
+            user: "admin101",
+        },
+        {
+            timestamp: "09:00:00 25/12/2021",
+            text: "Obviously, it doesn't actually work (this is just a front-end). But it works well as a little demo",
+            user: "admin101",
+        },
+        {
+            timestamp: "09:00:00 25/12/2021",
+            text: "Feel free to type some things in yourself.",
+            user: "admin101",
+        },
+        {
+            timestamp: "09:00:00 25/12/2021",
+            text: "NOTICE how the last forum post will always be automatically scrolled to if enough posts are on the page",
+            user: "admin101",
+        },
+        {
+            timestamp: "09:00:00 25/12/2021",
+            text: "Also, you can use the >> button, or just hit enter when the text box is in focus.",
+            user: "admin101"
+        },
+    ]);
+    const messageBox = useRef(null); 
+    const endOfPostsPosition = useRef(null);
+    
+    function clearMessages() {
+        setPosts([]);
+        endOfPostsPosition.current?.scrollIntoView();
+    }
+
+    function RenderMessage({forumPost}) {
+        const forumClass = forumPost.user == username ? "userForumPost" : "forumPost";
         return (
-            <div className="forumPost">
+            <div className={forumClass}>
                 <span className="postTimeStamp">{forumPost.timestamp}</span>
+                <span>@{forumPost.user}</span>
                 <span>{forumPost.text}</span>
             </div>
         );
     }
-
+    
     function sendMessage() {
-        let msgBox = document.getElementById("messageBox");
-        let msg = msgBox.value;
+        let msg = messageBox.current?.value;
 
-        if (msg != undefined || msg.length > 0) {
-            msgBox.value = "";
-            let date = new Date();
-            let str =
-                date.getHours() +
-                ":" +
-                date.getMinutes() +
-                ":" +
-                date.getSeconds() +
-                " " +
-                date.getDay() +
-                "/" +
-                date.getMonth() +
-                "/" +
-                date.getFullYear();
-            setPosts([...posts, { text: msg, timestamp: str }]);
-
-            console.log(posts.length);
+        if (msg == null || msg == undefined || msg.length == 0) 
+        {
+            return;
         }
-        msgBox.focus();
-        const bottom = document.getElementById("endOfPostsPosition");
-        bottom.scrollIntoView();
+
+        messageBox.current.value = "";
+        let date = new Date();
+        let str =
+            date.getHours() +
+            ":" +
+            date.getMinutes() +
+            ":" +
+            date.getSeconds() +
+            " " +
+            date.getDay() +
+            "/" +
+            date.getMonth() +
+            "/" +
+            date.getFullYear();
+        setPosts([...posts, { text: msg, timestamp: str, user: username }]);
+
+        messageBox.current?.focus()
+        endOfPostsPosition.current?.scrollIntoView();
     }
+
+    useEffect(() => {
+        const listener = (event) => {
+            if (event.code == "Enter" && !event.repeat) {
+                console.log(posts.length)
+                sendMessage();
+            }
+        };
+        messageBox.current?.addEventListener("keypress", listener);
+
+        return () => messageBox.current?.removeEventListener("keypress", listener);
+
+
+    }, [posts]);
 
     return (
         <div id="mainContent">
@@ -48,11 +99,17 @@ export default function Forum() {
                 {posts.map((post, i) => (
                     <RenderMessage key={i} forumPost={post} />
                 ))}
-                <span id="endOfPostsPosition"></span>
+                <span ref={endOfPostsPosition}></span>
             </div>
             <div id="userInteractionArea">
-                <input type="text" id="messageBox" autoFocus />
+                <input type="text" id="messageBox" ref={messageBox} autoFocus />
                 <button onClick={sendMessage}>&gt;&gt;&gt;</button>
+                <button 
+                    onClick={() => {
+                        setPosts([]);
+                        endOfPostsPosition.current?.scrollIntoView();
+                    }}
+                >CLEAR</button>
             </div>
         </div>
     );
