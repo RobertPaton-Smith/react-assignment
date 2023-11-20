@@ -92,8 +92,11 @@ export default function Home()
                         my HTML, CSS, JavaScript and React.js proficiency. I
                         hope that it comes through, and that it isn't too boring
                         to assess. If you are marking my work, and want the same
-                        done for your website, the best place to reach me is my
-                        personal email: robert.p-s@live.co.uk
+                        done for your website, the best place to reach me is in
+                        the discussion section for this project's GitHub repo:
+                        <a href="https://github.com/RobertPaton-Smith/react-assignment/discussions">
+                            https://github.com/RobertPaton-Smith/react-assignment
+                        </a>
                     </p>
                 </div>
 
