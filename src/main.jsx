@@ -7,7 +7,5 @@ import App from "./App.jsx"; // app.jsx has some styling that I can't get rid of
 // const greeting = React.createElement("h1", null, "Hello React") // alternative
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <App/>
-  </React.StrictMode>,
 )
